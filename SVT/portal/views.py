@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.core.mail import EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives, BadHeaderError
 from .models import posibleCliente
 from django.conf import settings
 from django.template.loader import render_to_string
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -36,11 +37,11 @@ def index(request):
 
         
         if correo.copiaMensaje == False:
-            emailMessage = EmailMultiAlternatives(subject=subject, body=text_content, from_email=settings.EMAIL_HOST_USER, to=[to_email])
+            emailMessage = EmailMultiAlternatives(subject=subject, body=text_content, from_email=[correo.email], to=[to_email])
             emailMessage.attach_alternative(html_content, "text/html")
             emailMessage.send(fail_silently=True)
         else:
-            emailMessage = EmailMultiAlternatives(subject=subject, body=text_content, from_email=settings.EMAIL_HOST_USER, cc=[correo.email], to=[to_email])
+            emailMessage = EmailMultiAlternatives(subject=subject, body=text_content, from_email=[correo.email], cc=[correo.email], to=[to_email])
             emailMessage.attach_alternative(html_content, "text/html")
             emailMessage.send(fail_silently=True)
             
