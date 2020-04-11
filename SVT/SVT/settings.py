@@ -126,11 +126,11 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-EMAIL_BACKEND = "sendgrid.backend.SendgridBackend"
-SENDGRID_API_KEY = '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'
-SENDGRID_SANDBOX_MODE_IN_DEBUG = False
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'olml12354@gmail.com'    
-# EMAIL_HOST_PASSWORD = 'consolAog0'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
+# EMAIL_BACKEND = "sendgrid.backend.SendgridBackend"
+# SENDGRID_API_KEY = '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'
+# SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'olml12354@gmail.com'    
+EMAIL_HOST_PASSWORD = 'consolAog0'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

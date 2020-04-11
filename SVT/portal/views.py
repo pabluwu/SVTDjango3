@@ -37,11 +37,11 @@ def index(request):
 
         
         if correo.copiaMensaje == False:
-            emailMessage = EmailMultiAlternatives(subject=subject, body=text_content, from_email=[correo.email], to=[to_email])
+            emailMessage = EmailMultiAlternatives(subject=subject, body=text_content, from_email=settings.EMAIL_HOST_USER, to=[to_email])
             emailMessage.attach_alternative(html_content, "text/html")
             emailMessage.send(fail_silently=True)
         else:
-            emailMessage = EmailMultiAlternatives(subject=subject, body=text_content, from_email=[correo.email], cc=[correo.email], to=[to_email])
+            emailMessage = EmailMultiAlternatives(subject=subject, body=text_content, from_email=settings.EMAIL_HOST_USER, cc=[correo.email], to=[to_email])
             emailMessage.attach_alternative(html_content, "text/html")
             emailMessage.send(fail_silently=True)
             
