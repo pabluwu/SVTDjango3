@@ -29,7 +29,7 @@ def index(request):
         }
         # contact_message = get_template('portal/contact_message.txt').render(context)
         subject = "El usuario {0} quiere contactarse contigo.".format(correo.nombre)
-        to_email = ['palito2305@gmail.com']
+        to_email = 'palito2305@gmail.com'
 
         text_content = render_to_string('portal/contact_message.txt', context, request=request)
         html_content = render_to_string('portal/plantillamensaje.html', context, request=request)
