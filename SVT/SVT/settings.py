@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'cjlptr3p&i75=qwm%)8)awifyrrh3m-!$m6)!964z%=7did49e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['portalcovid.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -74,16 +74,10 @@ WSGI_APPLICATION = 'SVT.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'svt_ingenieria',
-        'USER': 'postgres',
-        'PASSWORD': 'consolAog0',
-        'HOST': 'LOCALHOST',
-        'PORT': '',
-    }
-}
+import dj_database_url
+
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 
 # Password validation
